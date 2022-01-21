@@ -21,7 +21,7 @@ services:
     networks:
       - k6
     environment:
-     - DD_API_KEY=<APIKEY>
+     - DD_API_KEY=<API_KEY>
      - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=1
      - DD_SITE="datadoghq.com"
     volumes:
@@ -56,6 +56,7 @@ services:
       - "6565:6565"
     environment:
       - K6_STATSD_ENABLE_TAGS=true
+      - K6_STATSD_ADDR=datadog:8125
       - K6_OUT=influxdb=http://influxdb:8086/k6,statsd
       # - K6_HTTP_DEBUG=false
     volumes:
